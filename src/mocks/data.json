@@ -1,0 +1,12 @@
+{
+  "user":{
+    "id": {
+      "board": {
+        "tasks": [{
+          "taskName": "name1",
+          "user": "id"
+        }]
+      }
+    }
+  }
+}
