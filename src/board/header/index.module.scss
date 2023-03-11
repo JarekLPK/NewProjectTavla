@@ -1,0 +1,10 @@
+.state-wrapper {
+  display: flex;
+  padding-left: 0;
+  text-align: center;
+  list-style: none;
+
+  .state-element {
+    width: calc(100% / 6);
+  }
+}
