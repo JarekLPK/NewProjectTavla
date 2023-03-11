@@ -1,40 +1,26 @@
+import data from "../mocks/data.json";
+import Column from "./columns";
+import BoardContext from "./context";
+import Header from "./header";
 import styles from "./index.module.scss";
 
-const mock = [{
-    taskName: "name1",
-    user: "id",
-    state: "TO-DO"
-},
-    {
-        taskName: "name2",
-        user: "id",
-        state: "TO-DO"
-    },
-    {
-        taskName: "name3",
-        user: "id",
-        state: "TO-DO"
-    },
-    {
-        taskName: "name4",
-        user: "id",
-        state: "TO-DO"
-    },
-    {
-        taskName: "name5",
-        user: "id",
-        state: "coding"
-    }
-];
-
 const Board = () => {
-    return (<div className={styles.boardContainer}>
-        {mock.map(element => (
-            <div>{element.taskName}</div>
-            ) )}
+    const {
+        user: {
+            id: {
+                board: { tasks },
+            },
+        },
+    } = data;
 
+    return (
+        <div className={styles["board-container"]}>
+            <Header />
+            <BoardContext data={tasks}>
+                <Column />
+            </BoardContext>
+        </div>
+    );
+};
 
-    </div>)
-}
-
-export default Board
+export default Board;

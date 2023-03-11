@@ -1,0 +1,32 @@
+.tasks-list {
+  list-style: none;
+  padding: 0;
+
+  .task {
+    min-height: 112px;
+    background-color: #FFF;
+    width: 80%;
+    margin: 6px auto;
+    border-radius: 8px;
+    position: relative;
+
+    .delete-button {
+      background-color: transparent;
+      border: none;
+      position: absolute;
+      right : 0;
+      top: 0;
+    }
+
+  }
+
+  .state-select {
+    width: 100px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    position: absolute;
+    bottom: 0;
+    transform: translateX(-50%);
+  }
+}
+
