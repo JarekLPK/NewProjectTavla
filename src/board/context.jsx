@@ -1,8 +1,10 @@
 import React, { createContext, useState } from "react";
+import {generateRandomId} from "./utils.js";
 
 export const TasksContext = createContext({
     deleteTaskFromBoard: () => {},
     changeTaskState: () => {},
+    addNewTask: () => {},
     boardTasks: [],
 });
 
@@ -24,9 +26,24 @@ const BoardContext = ({ data, children }) => {
         setBoardTasks(updatedBoard);
     };
 
+    const addNewTask = (taskName, ac) => {
+        const newTask ={
+            taskName,
+            id: generateRandomId(10),
+            state:"to do",
+            ac
+
+        }
+        console.log([...boardTasks, newTask]);
+
+        setBoardTasks([...boardTasks, newTask]);
+
+
+    };
+
     return (
         <TasksContext.Provider
-            value={{ deleteTaskFromBoard, changeTaskState, boardTasks }}
+            value={{ deleteTaskFromBoard, changeTaskState, addNewTask, boardTasks }}
         >
             {children}
         </TasksContext.Provider>
