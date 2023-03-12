@@ -1,5 +1,6 @@
 import React, { createContext, useState } from "react";
 import {generateRandomId} from "./utils.js";
+import { doc, setDoc } from "firebase/firestore";
 
 export const TasksContext = createContext({
     deleteTaskFromBoard: () => {},
@@ -24,21 +25,16 @@ const BoardContext = ({ data, children }) => {
             return task;
         });
         setBoardTasks(updatedBoard);
-    };
 
+    };
     const addNewTask = (taskName, ac) => {
         const newTask ={
             taskName,
             id: generateRandomId(10),
             state:"to do",
             ac
-
         }
-        console.log([...boardTasks, newTask]);
-
         setBoardTasks([...boardTasks, newTask]);
-
-
     };
 
     return (
