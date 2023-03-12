@@ -5,6 +5,12 @@
         "tasks": [
           {
             "taskName": "name1",
+            "id": 0,
+            "state": "to do",
+            "ac": "criteria"
+          },
+          {
+            "taskName": "name1",
             "id": 1,
             "state": "to do",
             "ac": "criteria"

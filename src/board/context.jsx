@@ -1,8 +1,11 @@
 import React, { createContext, useState } from "react";
+import {generateRandomId} from "./utils.js";
+import { doc, setDoc } from "firebase/firestore";
 
 export const TasksContext = createContext({
     deleteTaskFromBoard: () => {},
     changeTaskState: () => {},
+    addNewTask: () => {},
     boardTasks: [],
 });
 
@@ -22,11 +25,21 @@ const BoardContext = ({ data, children }) => {
             return task;
         });
         setBoardTasks(updatedBoard);
+
+    };
+    const addNewTask = (taskName, ac) => {
+        const newTask ={
+            taskName,
+            id: generateRandomId(10),
+            state:"to do",
+            ac
+        }
+        setBoardTasks([...boardTasks, newTask]);
     };
 
     return (
         <TasksContext.Provider
-            value={{ deleteTaskFromBoard, changeTaskState, boardTasks }}
+            value={{ deleteTaskFromBoard, changeTaskState, addNewTask, boardTasks }}
         >
             {children}
         </TasksContext.Provider>

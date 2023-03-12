@@ -6,6 +6,7 @@ import Tasks from "./tasks/index.jsx";
 
 const Column = () => {
     const { boardTasks } = useContext(TasksContext);
+    console.log(boardTasks);
     const sortedTasks = TASK_STATES.map((state) =>
         boardTasks.filter((task) => state.toLowerCase() === task.state)
     );
