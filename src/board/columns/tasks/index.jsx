@@ -1,18 +1,24 @@
 import React, { useContext } from "react";
 import { TASK_STATES } from "../../constants";
-import { TasksContext } from "../../context";
+import { Context } from "../../context";
 import styles from "./index.module.scss";
 
 const Tasks = ({ tasks }) => {
-    const { deleteTaskFromBoard, changeTaskState } = useContext(TasksContext);
+    const { deleteTaskFromBoard, changeTaskState } = useContext(Context);
 
     return (
         <ul className={styles["tasks-list"]}>
             {tasks?.map((task, index) => {
                 return (
                     <li className={styles.task} key={index}>
-                        <button  className={styles["delete-button"]} onClick={() => deleteTaskFromBoard(task.id)}>X</button>
+                        <button
+                            className={styles["delete-button"]}
+                            onClick={() => deleteTaskFromBoard(task.id)}
+                        >
+                            X
+                        </button>
                         <p>{task.taskName}</p>
+                        {task.user && task.state !== "to do" && <p>{task.user}</p>}
                         {task.ac && <p>A.C {task.ac}</p>}
                         <select
                             name="taskStates"
@@ -20,7 +26,9 @@ const Tasks = ({ tasks }) => {
                             className={styles["state-select"]}
                             onChange={(e) => changeTaskState(task.id, e.target.value)}
                         >
-                            <option key={`${task.state}-${task.id}`}>{task.state.toUpperCase()}</option>
+                            <option key={`${task.state}-${task.id}`}>
+                                {task.state.toUpperCase()}
+                            </option>
                             {TASK_STATES.map(
                                 (state, index) =>
                                     state.toLowerCase() !== task.state && (
@@ -36,4 +44,3 @@ const Tasks = ({ tasks }) => {
 };
 
 export default Tasks;
-

@@ -1,15 +1,16 @@
 import React, { useContext } from "react";
 import { TASK_STATES } from "../constants";
-import { TasksContext } from "../context";
+import { Context } from "../context";
 import styles from "./index.module.scss";
 import Tasks from "./tasks/index.jsx";
 
 const Column = () => {
-    const { boardTasks } = useContext(TasksContext);
-    console.log(boardTasks);
+    const { boardTasks } = useContext(Context);
+
     const sortedTasks = TASK_STATES.map((state) =>
         boardTasks?.filter((task) => state.toLowerCase() === task.state)
     );
+
     return (
         <ul className={styles["columns"]}>
             {sortedTasks.map((columnData, index) => (
