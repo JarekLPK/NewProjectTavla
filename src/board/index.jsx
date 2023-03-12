@@ -4,22 +4,18 @@ import BoardContext from "./context";
 import Header from "./header";
 import styles from "./index.module.scss";
 import Newtask from "./new-task";
-import {useState} from "react";
+import {useState, useEffect} from "react";
+import { collection, getDocs } from "firebase/firestore";
+import {firestore} from "../firebase_config/firebase.js";
 
 const Board = () => {
     const [isNewTaskVisible, setIsNewTaskVisible] = useState(false);
-    const {
-        user: {
-            id: {
-                board: { tasks },
-            },
-        },
-    } = data;
+
 
     return (
         <div className={styles["board-container"]}>
             <Header />
-            <BoardContext data={tasks}>
+            <BoardContext >
                 <Column />
                 {isNewTaskVisible && <Newtask onClick ={setIsNewTaskVisible}/>}
             </BoardContext>

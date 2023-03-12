@@ -8,7 +8,7 @@ const Tasks = ({ tasks }) => {
 
     return (
         <ul className={styles["tasks-list"]}>
-            {tasks.map((task, index) => {
+            {tasks?.map((task, index) => {
                 return (
                     <li className={styles.task} key={index}>
                         <button  className={styles["delete-button"]} onClick={() => deleteTaskFromBoard(task.id)}>X</button>

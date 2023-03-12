@@ -8,7 +8,7 @@ const Column = () => {
     const { boardTasks } = useContext(TasksContext);
     console.log(boardTasks);
     const sortedTasks = TASK_STATES.map((state) =>
-        boardTasks.filter((task) => state.toLowerCase() === task.state)
+        boardTasks?.filter((task) => state.toLowerCase() === task.state)
     );
     return (
         <ul className={styles["columns"]}>
