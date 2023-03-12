@@ -1,25 +1,41 @@
-import data from "../mocks/data.json";
+import { useState } from "react";
 import Column from "./columns";
+import Auth from "./auth";
 import BoardContext from "./context";
 import Header from "./header";
 import styles from "./index.module.scss";
-import Newtask from "./new-task";
-import {useState, useEffect} from "react";
-import { collection, getDocs } from "firebase/firestore";
-import {firestore} from "../firebase_config/firebase.js";
+import NewTask from "./new-task";
 
 const Board = () => {
     const [isNewTaskVisible, setIsNewTaskVisible] = useState(false);
-
+    const [isUserLogged, setIsUserLogged] = useState(
+        Boolean(localStorage.getItem("isUserLoggedIn"))
+    );
 
     return (
         <div className={styles["board-container"]}>
-            <Header />
-            <BoardContext >
-                <Column />
-                {isNewTaskVisible && <Newtask onClick ={setIsNewTaskVisible}/>}
+
+            <BoardContext onClick={setIsUserLogged}>
+                {isUserLogged ? (
+                    <>
+                        <button
+                        onClick={() => {
+                            localStorage.clear();
+                            setIsUserLogged(false);
+                        }}
+                    >
+                        Log Out
+                    </button>
+
+                        <Header />
+                        <Column />
+                        {isNewTaskVisible && <NewTask onClick={setIsNewTaskVisible} />}
+                        <button onClick={() => setIsNewTaskVisible(true)}>New task</button>
+                    </>
+                ) : (
+                    <Auth />
+                )}
             </BoardContext>
-            <button onClick={() => setIsNewTaskVisible(true)}>New task</button>
         </div>
     );
 };
