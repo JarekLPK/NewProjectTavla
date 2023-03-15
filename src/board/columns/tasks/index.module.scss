@@ -4,7 +4,7 @@
 
   .task {
     min-height: 112px;
-    background-color: #FFF;
+    background-color: #fff;
     width: 80%;
     margin: 6px auto;
     border-radius: 8px;
@@ -14,10 +14,9 @@
       background-color: transparent;
       border: none;
       position: absolute;
-      right : 0;
+      right: 0;
       top: 0;
     }
-
   }
 
   .state-select {
@@ -25,8 +24,9 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     position: absolute;
-    bottom: 0;
+    bottom: 10%;
     transform: translateX(-50%);
+    border: none;
+    border-bottom: 2px solid rgb(254, 115, 115);
   }
 }
-
