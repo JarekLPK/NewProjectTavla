@@ -10,6 +10,7 @@ const Column = () => {
     const sortedTasks = TASK_STATES.map((state) =>
         boardTasks?.filter((task) => state.toLowerCase() === task.state)
     );
+    console.log(sortedTasks);
 
     return (
         <ul className={styles["columns"]}>

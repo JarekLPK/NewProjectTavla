@@ -6,16 +6,17 @@ const NewTask = ({ onClick }) => {
     const { addNewTask } = useContext(Context);
     const [taskName, setTaskName] = useState("");
     const [acceptanceCriteria, setAcceptanceCriteria] = useState("");
-
+    console.log(acceptanceCriteria);
     return (
         <div className={styles["overlay"]} onClick={(e) => e.stopPropagation()}>
             <div className={styles["new-task"]}>
                 <button className={styles.close} onClick={() => onClick(false)}>
-                    X
+                    <span class="material-symbols-outlined">close</span>
                 </button>
                 <div className={styles["data-wrapper"]}>
                     <label htmlFor="task-name">Task name</label>
                     <input
+                        className={styles["task-name"]}
                         name="task-name"
                         id="task-name"
                         onChange={({ target: { value } }) => setTaskName(value)}
@@ -24,10 +25,11 @@ const NewTask = ({ onClick }) => {
                 <div className={styles["data-wrapper"]}>
                     <label
                         htmlFor="ac"
+                        onChange={({ target: { value } }) => setAcceptanceCriteria(value)}
                     >
                         Acceptance criteria
                     </label>
-                    <input name="ac" id="ac" onChange={({ target: { value } }) => setAcceptanceCriteria(value)}/>
+                    <input className={styles["ac"]} name="ac" id="ac" />
                 </div>
                 <button
                     className={styles["add-task"]}
@@ -36,7 +38,7 @@ const NewTask = ({ onClick }) => {
                         addNewTask(taskName, acceptanceCriteria);
                     }}
                 >
-                    Add task
+                    <span class="material-symbols-outlined">add_circle</span>
                 </button>
             </div>
         </div>

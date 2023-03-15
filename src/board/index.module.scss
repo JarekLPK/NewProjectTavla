@@ -1,6 +1,26 @@
 .board-container {
+  position: relative;
   overflow: hidden;
-  height: calc(100vh - 48px);
+  min-height: calc(100vh - 48px);
   margin: 24px 36px;
-  border: 1px solid black;
+  border: 2px solid rgb(254, 115, 115);
+  border-radius: 8px;
+
+  .log-out-button {
+    display: block;
+    margin-left: auto;
+    background-color: transparent;
+    border: none;
+  }
+
+  .new-task-button {
+    display: block;
+    width: 200px;
+    height: 40px;
+    background-color: transparent;
+    border: 2px solid rgb(254, 115, 115);
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0 auto;
+  }
 }
